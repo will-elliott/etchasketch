@@ -1,4 +1,4 @@
-let gridSize = 4;
+let gridSize = 6;
 let gridWidth = gridSize * 70
 let gridHeight = gridWidth
 
@@ -19,8 +19,18 @@ for(let i = 0; i<gridSize * gridSize; i++){
 }
 
 gridDivs = document.querySelectorAll('.gridDiv')
-gridDivs.forEach(div => {
-    div.addEventListener('mouseover', () => {
-        div.classList.add('hovered');
+function initDraw(){
+    gridDivs.forEach(div => {
+        div.addEventListener('mouseover', () => {
+            div.classList.add('hovered');
+        });
     });
-});
+}
+initDraw();
+
+clearButton = document.querySelector('#Clear')
+clearButton.addEventListener('click', () => {
+    gridDivs.forEach(div => {
+        div.classList.remove('hovered');
+    })
+})
