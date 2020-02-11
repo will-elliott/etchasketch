@@ -1,20 +1,12 @@
-let gridSize = 6;
-let gridWidth = gridSize * 70
-let gridHeight = gridWidth
+let gridSize = prompt('Enter grid size');
 
-gridContainer = document.querySelector('#gridContainer');
-gridContainer.style.cssText = `height: ${gridHeight}px;`
-gridContainer.style.cssText = `width: ${gridWidth}px;`
-
-
-container = document.querySelector('#container');
-container.style.cssText = `grid-template-columns: repeat(${gridSize}, 1fr);
-                           grid-template-rows: repeat(${gridSize}, 1fr);`
-
+let gridDivWidth = 600 / gridSize;
 
 for(let i = 0; i<gridSize * gridSize; i++){
     gridDiv = document.createElement('div');
     gridDiv.setAttribute('class', 'gridDiv');
+    gridDiv.style.height = `${gridDivWidth}px`
+    gridDiv.style.width = `${gridDivWidth}px`
     container.appendChild(gridDiv);
 }
 
@@ -34,3 +26,12 @@ clearButton.addEventListener('click', () => {
         div.classList.remove('hovered');
     })
 })
+
+resizeButton = document.querySelector('#Resize')
+resizeButton.addEventListener('click', () => {
+    location.reload();
+})
+
+container = document.querySelector('#container');
+container.style.cssText = `grid-template-columns: repeat(${gridSize}, 1fr);
+                           grid-template-rows: repeat(${gridSize}, 1fr);`
